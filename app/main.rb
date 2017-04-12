@@ -9,7 +9,8 @@ def main(argv)
       end
       argv.each do |v|
           #パラメータをセット
-          param = v.to_s 
+          #urlで"+"は" "になるので"%2b"にエスケープしてから代入
+          param = v.to_s.gsub("+","%2b") 
           #urlを作成
           uri = URI.parse('http://challenge-server.code-check.io/api/hash?q='+param)
           
